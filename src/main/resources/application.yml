@@ -1,0 +1,138 @@
+server:
+  port: 8090
+  session-timeout: 30
+spring:
+  thymeleaf:
+    mode: HTML5
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    content-type: text/html
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: utf-8
+  profiles:
+    active: local
+mybatis:
+  typeAliasesPackage: com.highrock.*.bean
+  mapperLocations: classpath:mappers/*.xml
+security:
+  basic:
+    enable: true
+  user:
+    name: highrock
+    password: Tianshi@18
+log:
+  path: /usr/api/logs
+  level: info
+
+backEndApi:
+  auth:
+    user: highrock
+    password: Tianshi@18
+  url:
+    insertOrder: /order/
+    updateOrder: /order/addr
+---
+spring:
+  profiles: local
+  datasource:
+    url : jdbc:mysql://localhost:3306/72craft_prod
+    username : earthling
+    password : 4wsgfxt87oguykjo7ilgubjhydthcg
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  earthlingApiUrl:
+    root: https://stage.hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://172.16.1.48:8090
+  s3LogBucket: highrock-api-log-stage
+---
+spring:
+  profiles: local-earthling
+  datasource:
+    url : jdbc:mysql://72-craft-mysql:3306/72craft
+    username : root
+    password : qwerty1234
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  earthlingApiUrl:
+    root: https://stage.hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://218.69.108.30:14890
+  s3LogBucket: highrock-api-log-stage
+---
+spring:
+  profiles: dev-highrock
+  datasource:
+    url : jdbc:mysql://172.16.1.47:3306/aws
+    username : highrock
+    password : Tianshi@18
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  earthlingApiUrl:
+    root: https://stage.hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://218.69.108.30:14890
+  s3LogBucket: highrock-api-log-stage
+---
+spring:
+  profiles: stage-aurora
+  datasource:
+    url : jdbc:mysql://stack-72craft-rds-1gtu5nefazyuh-dbcluster-svodyebz21l8.cluster-cu0vnrbz3gl1.us-west-2.rds.amazonaws.com:3306/72craft_stage
+    username : earthling
+    password : 4wsgfxt87oguykjo7ilgubjhydthcg
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  earthlingApiUrl:
+    root: https://stage.hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://218.69.108.30:14890
+  s3LogBucket: highrock-api-log-stage
+---
+spring:
+  profiles: stage-aurora-tunnel
+  datasource:
+    url : jdbc:mysql://127.0.0.1:3306/72craft_stage
+    username : earthling
+    password : 4wsgfxt87oguykjo7ilgubjhydthcg
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  earthlingApiUrl:
+    root: https://stage.hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://218.69.108.30:14890
+  s3LogBucket: highrock-api-log-stage
+---
+spring:
+  profiles: prod-aurora
+  datasource:
+    url : jdbc:mysql://stack-72craft-rds-1gtu5nefazyuh-dbcluster-svodyebz21l8.cluster-cu0vnrbz3gl1.us-west-2.rds.amazonaws.com:3306/72craft_prod
+    username : earthling
+    password : 4wsgfxt87oguykjo7ilgubjhydthcg
+    driverClassName : com.mysql.jdbc.Driver
+  earthlingAuth:
+    user: earthlingApi@highrock.com.cn
+    password: Tianshi@18
+  EarthlingApiUrl:
+    root: https://hexaoutdoor.com/api/highrock
+    orderStatus: /Order_Status_To_Customer
+  backEndApiUrl: http://218.69.108.30:14590
+  s3LogBucket: highrock-api-log-prod
+
+
+

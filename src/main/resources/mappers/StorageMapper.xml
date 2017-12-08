@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.highrock.storage.dao.StorageMapper">
+
+	<update id="updateStorage" parameterType="com.highrock.storage.bean.StorageMaterial">
+		UPDATE cp_storage_material
+		<set>
+			material_storeage_num=#{storageMaterial.material_storage_num}
+		</set>
+		WHERE material_code=#{storageMaterial.material_code}
+	</update>
+
+</mapper>
